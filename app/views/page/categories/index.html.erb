@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>后台管理系统——XX管理</title>
+  <%= javascript_include_tag "jquery-1.11.1.min" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  <%= javascript_include_tag "jquery.dataTables.min" %>
+  <%= javascript_include_tag "dataTables.bootstrap" %>
+  <%= javascript_include_tag "jquery.uploadify" %>
+  <%= javascript_include_tag "public_javascript" %>
+  <%= javascript_include_tag "page/sys/cateScript" %>
+  
+  <%= stylesheet_link_tag "bootstrap" %>
+  <%= stylesheet_link_tag "dataTables.bootstrap" %>
+  <%= stylesheet_link_tag "uploadify" %>
+  <%= stylesheet_link_tag "common" %>
+  <%= stylesheet_link_tag "main" %>
+</head>
+<body>
+  <%= render '/page/page/header' %>
+  <div class="container clearfix">
+    <%= render '/page/page/menu' %>
+    <!--/sidebar-->
+    <div class="main-wrap">
+      <div class="crumb-wrap">
+        <div class="crumb-list">
+          <i class="icon-font"></i><a href="/page/page/index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">XX管理</span>
+        </div>
+      </div>
+      <div class="result-wrap">
+        <div class="result-content">
+          <input type="hidden" name="cateIds" />
+          <table id="example" class="table table-bordered">
+            <thead>
+              <tr>
+                <th><input type="checkbox" name="allChecked" /></th>
+                <th>XX名称</th>
+                <th>XX图标</th>
+                <th>上级XX</th>
+                <th>描述</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="addCate" class="modal fade" role="dialog" aria-labelledby="myModalLabel" style="width:600px;margin:auto auto;">
+        <form name="addCateForm">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">XX信息</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <ul class="nav nav-tabs" id="myTab">
+                    <li><a href="#baseMessage">基本信息</a></li>
+                    <li><a href="#selectSuperCate">所属XX</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="baseMessage">
+                      <input type="hidden" name="cate_id"/>
+                      <div class="input-group">
+                        <span class="input-group-addon">XX名称</span> 
+                        <input type="text" class="form-control" name="cate_name" required placeholder="填写分类名称，不能和现有的分类名称重复，必填" />
+                      </div>
+                      <div class="input-group"> <span class="input-group-addon">XX图标</span>
+                        <input type="hidden" name="cate_image"/>
+                        <input type="file" class="form-control" name="image_upload" id="pic_upload" placeholder="选择图片，图片不能大于2M!必填"/>
+                      </div>
+                      <div style="margin-top: 5px">效果预览：&nbsp;&nbsp;<span class="alert" role="alert" name="uploadTips"></span></div>
+                      <div name="imgDiv" style="display: none;margin-top: 5px;">
+                        <img name="imgShow" src="" style="width: 267px;height: 167px" title="预览"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                      </div>
+                      <div class="input-group"> <span class="input-group-addon">XX描述</span>
+                        <textarea name="cate_description" class="form-control" rows="3" style="max-width: 467px"></textarea>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="selectSuperCate">
+                      <input name="cate_super_id" type="hidden" />
+                      <ul id="tree" class="ztree" style="width: 560px; overflow: auto;"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <span name="addTips"></span> 
+                <input type="reset" class="btn btn-default" data-dismiss="modal" value="取消" /> 
+                <input type="submit" class="btn btn-primary" value="提交" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

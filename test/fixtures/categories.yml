@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cate_name: MyString
+  cate_image: MyString
+  cate_super_id: 1
+  cate_description: MyString
+
+two:
+  cate_name: MyString
+  cate_image: MyString
+  cate_super_id: 1
+  cate_description: MyString
